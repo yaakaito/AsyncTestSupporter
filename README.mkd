@@ -1,0 +1,42 @@
+# AsyncTestSupporter
+
+Like GHUnit AsyncTestCase functions. (Not supported all.)
+
+## Usage
+
+Setup with Cocoapods:
+
+```
+pod 'AsyncTestSupporter'
+```
+
+and import:
+
+```objective-c
+#import "AsyncTestSupporter"
+```
+
+### Async test with SenTestingKit
+
+```objective-c
+- (void)testAsyncMethod
+{
+  
+  // Create instance.
+  AsyncTestSupporter *asyncTest = [[AsyncTestSupporter alloc] init];
+
+  // Prepare for asynchronous call.
+  [asyncTest prepare]:
+
+  __weak AsyncTestSupporter *that = asyncTest;
+  // Call asynchronous method.
+  [object asyncMethod:^() { // Completion blocks.
+    // Wait for notify with timeout seconds.
+    [that waitForTimeout:10];
+  }];
+
+  // Notify state if completed asynchronous method.
+  [asyncTest notify:notify:kAsyncTestSupporterWaitStatusSuccess];
+
+}
+```
