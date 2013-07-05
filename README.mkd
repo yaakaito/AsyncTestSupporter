@@ -31,12 +31,12 @@ and import:
   __weak AsyncTestSupporter *that = asyncTest;
   // Call asynchronous method.
   [object asyncMethod:^() { // Completion blocks.
-    // Wait for notify with timeout seconds.
-    [that waitForTimeout:10];
+    // Notify state if completed asynchronous method.
+    [asyncTest notify:notify:kAsyncTestSupporterWaitStatusSuccess];
   }];
 
-  // Notify state if completed asynchronous method.
-  [asyncTest notify:notify:kAsyncTestSupporterWaitStatusSuccess];
+  // Wait for notify with timeout seconds.
+  [that waitForTimeout:10];
 
 }
 ```
