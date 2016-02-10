@@ -4,7 +4,7 @@ Like GHUnit AsyncTestCase functions. (Not supported all.)
 
 ## Usage
 
-Setup with Cocoapods:
+Setup with CocoaPods:
 
 ```
 pod 'AsyncTestSupporter'
